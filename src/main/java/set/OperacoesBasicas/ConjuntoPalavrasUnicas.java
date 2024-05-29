@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ConjuntoPalavrasUnicas {
-    Set<String> palavrasUnicas;
+    private Set<String> palavrasUnicas;
 
     public ConjuntoPalavrasUnicas() {
         this.palavrasUnicas = new HashSet<>();
@@ -37,10 +37,7 @@ public class ConjuntoPalavrasUnicas {
             System.out.println("O conjunto está vazio!");
             return;
         }
-        System.out.println("Conjunto:");
-        for (String p : palavrasUnicas) {
-            System.out.println(p);
-        }
+        System.out.println(palavrasUnicas);
     }
 
     public static void main(String[] args) {

@@ -1,5 +1,7 @@
 package main.java.list.Ordenacao;
 
+import java.util.Comparator;
+
 public class Cliente implements Comparable<Cliente> {
     private String nome;
     private int idade;
@@ -35,5 +37,13 @@ public class Cliente implements Comparable<Cliente> {
                 ", idade=" + idade +
                 ", sexo='" + sexo + '\'' +
                 "}\n";
+    }
+}
+
+class ComparatorPorNome implements Comparator<Cliente> {
+
+    @Override
+    public int compare(Cliente p1, Cliente p2) {
+        return p1.getNome().compareToIgnoreCase(p2.getNome());
     }
 }

@@ -31,8 +31,22 @@ public class OrdenacaoClientes {
 
     public List<Cliente> ordenarClientesMaisVelhos() {
         List<Cliente> clientesPorIdade = new ArrayList<>(listaClientes);
+        // Collections.sort(clientesPorIdade);
+        // Collections.reverse(clientesPorIdade);
         clientesPorIdade.sort(Collections.reverseOrder());
         return clientesPorIdade;
+    }
+
+    public List<Cliente> ordenarClientesMaisNovos() {
+        List<Cliente> clientesPorIdadeMaisNovos = new ArrayList<>(listaClientes);
+        Collections.sort(clientesPorIdadeMaisNovos);
+        return clientesPorIdadeMaisNovos;
+    }
+
+    public List<Cliente> ordenarClientesPorOrdemAlfabetica() {
+        List<Cliente> clientesPorOrdemAlfabetica = new ArrayList<>(listaClientes);
+        Collections.sort(clientesPorOrdemAlfabetica, new ComparatorPorNome());
+        return clientesPorOrdemAlfabetica;
     }
 
     public static void main(String[] args) {
@@ -42,6 +56,8 @@ public class OrdenacaoClientes {
         clientes.adicionarCliente("Fernando", 51, "Masculino");
         clientes.adicionarCliente("Brenda", 27, "Feminino");
         System.out.println(clientes.ordenarClientesMaisVelhos());
+        System.out.println(clientes.ordenarClientesMaisNovos());
+        System.out.println(clientes.ordenarClientesPorOrdemAlfabetica());
 
     }
 

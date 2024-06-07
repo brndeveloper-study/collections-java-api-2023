@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class AgendaContatos {
     //atributos
-    private Set<Contato> contatoSet;
+    private final Set<Contato> contatoSet;
 
     public AgendaContatos() {
         this.contatoSet = new HashSet<>();
@@ -54,9 +54,9 @@ public class AgendaContatos {
 
         agendaContatos.exibirContatos();
 
-//        System.out.println(agendaContatos.pesquisarPorNome("Camila"));
+        System.out.println(agendaContatos.pesquisarPorNome("Maria"));
 
-//        System.out.println("Contato atualizado: " + agendaContatos.atualizarNumeroContato("Maria Silva", 55555555));
+        System.out.println("Contato atualizado: " + agendaContatos.atualizarNumeroContato("Maria Silva", 55555555));
 
     }
 

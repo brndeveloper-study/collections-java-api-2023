@@ -32,6 +32,10 @@ public class Team {
         return mapsPicks;
     }
 
+    public Set<String> getMapsBans() {
+        return mapsBans;
+    }
+
     public void addMapPick(String map) {
         this.mapsPicks.add(map);
     }
@@ -58,10 +62,6 @@ public class Team {
     @Override
     public int hashCode() {
         return Objects.hash(getMapsPicks(), getMapsBans());
-    }
-
-    public Set<String> getMapsBans() {
-        return mapsBans;
     }
 
 }

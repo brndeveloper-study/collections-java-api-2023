@@ -21,21 +21,6 @@ public class CounterStrikeVetoSystem {
         this.chosenMaps = new HashSet<>();
     }
 
-    public void startVeto() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print(team1.getName() + " bans: ");
-        team1.addMapBan(scanner.nextLine());
-
-        System.out.println(team2.getName() + " bans: ");
-        team2.addMapBan(scanner.nextLine());
-
-        System.out.println(team1.getName() + " picks: ");
-        team1.addMapPick(scanner.nextLine());
-
-        System.out.println(team2.getName() + " picks: ");
-        team2.addMapPick(scanner.nextLine());
-    }
-
     public void addMapPick(Team team, String map) {
         String mapPick = formatWord(map);
 
@@ -108,7 +93,11 @@ public class CounterStrikeVetoSystem {
         if (team.getMapsBans().isEmpty()) {
             System.out.println(team.getName() + " has no banned maps yet.");
             return;
+        } else if (chosenMaps.size() == 7) {
+            System.out.println("Map pool has already been determined.");
+            return;
         }
+
         for (String mapBan : team.getMapsBans()) {
             if (mapBan.equalsIgnoreCase(map)) {
                 team.removeMapBan(map);
@@ -118,7 +107,7 @@ public class CounterStrikeVetoSystem {
         System.out.println(team.getName() + " did not pick the map " + map + ".");
     }
 
-    public void showTeamPicks(Team team) {
+    public void showTeamPick(Team team) {
         if (team.getMapsPicks().isEmpty()) {
             System.out.println(team.getName() + " has no picked maps yet.");
             return;
@@ -129,11 +118,15 @@ public class CounterStrikeVetoSystem {
         }
     }
 
-    public void removeTeamPicks(Team team, String map) {
+    public void removeTeamPick(Team team, String map) {
         if (team.getMapsPicks().isEmpty()) {
             System.out.println(team.getName() + " has no picked maps yet.");
             return;
+        } else if (chosenMaps.size() == 7) {
+            System.out.println("Map pool has already been determined.");
+            return;
         }
+
         for (String mapBan : team.getMapsPicks()) {
             if (mapBan.equalsIgnoreCase(map)) {
                 team.removeMapPick(map);
@@ -185,10 +178,13 @@ public class CounterStrikeVetoSystem {
         vetoFuriaFnatic.addMapPick(fnatic, "Inferno");
         vetoFuriaFnatic.addMapPick(furia, "Mirage");
 
+
         vetoFuriaFnatic.showRemainingMaps();
 
         vetoFuriaFnatic.addMapBan(fnatic, "Vertigo");
         vetoFuriaFnatic.addMapBan(furia, "Dust2");
+
+        vetoFuriaFnatic.removeTeamVeto(fnatic, "Vertigo");
     }
 
 }
